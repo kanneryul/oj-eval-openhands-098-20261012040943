@@ -60,8 +60,15 @@ public:
         return result;
     }
     
+    void cleanup(TreeNode* node) {
+        if (node == nullptr) return;
+        cleanup(node->left);
+        cleanup(node->right);
+        delete node;
+    }
+    
     ~Solution() {
-        // Clean up memory (optional for this problem)
+        cleanup(root);
     }
 };
 
